@@ -1,0 +1,227 @@
+body {
+  background           : url(https://images.unsplash.com/photo-1607457561901-e6ec3a6d16cf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80), linear-gradient(110deg, #f93d66, #6d47d9);
+  background-size      : 340px, auto;
+  min-height           : calc(100vh - 100px);
+  margin               : 50px;
+  /* background        : white; */
+  background-attachment: fixed;
+  letter-spacing       : -1px;
+}
+
+button {
+  background-color: #ffc600;
+}
+
+.wrapper {
+  display : grid;
+  grid-gap: 20px;
+}
+
+/* nav */
+.menu ul {
+  display              : grid;
+  grid-gap             : 10px;
+  list-style           : none;
+  padding              : 0;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+ul li a {
+  display        : block;
+  text-decoration: none;
+  color          : #000;
+  padding        : 10px;
+  background     : yellow;
+  font-size      : 20px;
+  text-align     : center;
+}
+
+ul li a:hover {
+  background: #02281c;
+  color     : #fff;
+}
+
+[aria-controls="menu-list"] {
+  display: none;
+}
+
+/* Nav end */
+img {
+  max-width: 100%;
+}
+
+.hero {
+  grid-area          : hero;
+  min-height         : 400px;
+  padding            : 50px;
+  background         : white url(https://images.unsplash.com/photo-1545092714-55b264ca417d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=764&q=80);
+  background-size    : cover;
+  background-position: bottom right;
+  display            : flex;
+  flex-direction     : column;
+  align-items        : start;
+  justify-content    : center;
+  opacity            : 1;
+}
+
+.cta1 {
+  grid-area: cta1;
+}
+
+.cta2 {
+  grid-area: cta2;
+}
+
+.cta {
+  background-color: yellow;
+  display         : grid;
+  align-items     : center;
+  justify-content : center;
+  text-align      : center;
+}
+
+.cta p {
+  margin: 0;
+}
+
+
+.price {
+  font-size  : 60px;
+  font-weight: 300;
+}
+
+.top {
+  display : grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "hero hero cta1"
+    "hero hero cta2";
+}
+
+.hero>* {
+  background: yellow;
+  padding   : 5px;
+  color     : #02281c;
+}
+
+/* Features */
+.features {
+  display              : grid;
+  grid-gap             : 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.feature {
+  background: #fff;
+  padding   : 10px;
+  text-align: center;
+  border    : 1px solid #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature .icon {
+  font-size: 50px;
+}
+
+.feature p {
+  color: rgb(0, 0, 0, 0.7)
+}
+
+/* About Section */
+.about {
+  display              : grid;
+  background-color     : #fff;
+  grid-template-columns: 400px 1fr;
+  padding              : 50px;
+  align-items          : center;
+}
+
+/* Gallery */
+.gallery {
+  display              : grid;
+  grid-gap             : 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gallery img {
+  width: 100%;
+}
+
+.gallery h2 {
+  display              : grid;
+  grid-column          : 1/-1;
+  grid-template-columns: 1fr auto 1fr;
+  grid-gap             : 20px;
+  align-items          : center;
+}
+
+.gallery h2::after {
+  --direction: right;
+}
+
+.gallery h2::before,
+.gallery h2::after {
+  display   : block;
+  content   : '';
+  height    : 10px;
+  background: linear-gradient(to var(--direction), left), rgb(235, 235, 27);
+}
+
+/* responsive */
+@media (max-width:1000px) {
+  .menu {
+    perspective: 800px;
+  }
+
+  [aria-controls="menu-list"] {
+    display      : block;
+    margin-bottom: 10px;
+  }
+
+  .menu ul {
+    max-height: 0;
+    overflow  : hidden;
+    transform : rotateX(90deg);
+    transition: all 0.5s;
+  }
+
+  [aria-expanded="true"]~ul {
+    display   : grid;
+    max-height: 500px;
+    transform : rotateX(0);
+  }
+
+  [aria-expanded="false"] .close {
+    display: none;
+  }
+
+  [aria-expanded="true"] .close {
+    display: inline-block;
+  }
+
+  [aria-expanded="true"] .open {
+    display: none;
+  }
+
+}
+
+@media (max-width:700px) {
+  .top {
+    grid-template-areas:
+      "hero hero"
+      "cta1 cta2";
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:500px) {
+  .top {
+    grid-template-areas:
+      "hero"
+      "cta1"
+      "cta2";
+  }
+}
